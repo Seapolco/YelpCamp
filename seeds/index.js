@@ -26,9 +26,14 @@ const seedDB = async () => {
         })
         await camp.save();
     }
+    
 };
 
+
 seedDB().then(() => {
+    
+    console.log("Database seeded!")
     mongoose.connection.close();
+
 })
 
