@@ -28,16 +28,19 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req,res) => {
-    res.render('home')
+    res.render('home', {title: "home"})
 });
 
 app.get('/campgrounds', async (req,res) => {
     const campgrounds = await Campground.find({});
+    res.locals.title = 'Campgrounds';
+    //console.log(res.locals.title)
     res.render('campgrounds/index', {campgrounds})
 });
 
 app.get('/campgrounds/new', (req,res) => {
-    console.log(req.url)
+    res.locals.title = 'New Campground';
+    console.log(req.locals)
     res.render('campgrounds/new')
 })
 
@@ -49,11 +52,14 @@ app.post('/campgrounds', async (req,res) => {
 
 
 app.get('/campgrounds/:id', async (req,res) => {
-    const campground = await Campground.findById(req.params.id)
+    const campground = await Campground.findById(req.params.id);
+    res.locals.title = campground.title;
+    console.log(campground.title)
     res.render('campgrounds/show', {campground})
 })
 
 app.get('/campgrounds/:id/edit', async (req,res) => {
+    res.locals.title = 'Edit Campground';
     const campground = await Campground.findById(req.params.id)
     res.render('campgrounds/edit', {campground})
 })
