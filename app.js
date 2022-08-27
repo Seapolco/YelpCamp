@@ -5,6 +5,7 @@ const Campground = require('./models/campground');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 
+
 mongoose.connect('mongodb://localhost:27017/yelp-camp');
 
 const db = mongoose.connection; // Helps to shorten the code.
