@@ -3,6 +3,7 @@
     <h2><%= campground.location %> </h2>
     <img src="<%= campground.image %> " alt="">
     <p><%= campground.description %> </p>
+    <p>Price : £<%= campground.price %> </p>
     <a href="/campgrounds/<%= campground._id %>/edit ">Edit</a>
     <form action="/campgrounds/<%= campground.id %>?_method=DELETE " method="POST">
         <button>Delete</button>
